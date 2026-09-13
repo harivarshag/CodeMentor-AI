@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CodeMentor AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav">
+
+        <div>
+
+            <h1>
+                CodeMentor <span>AI</span>
+            </h1>
+
+            <p>
+                Intelligent Python Code Analysis & Learning Platform
+            </p>
+
+        </div>
+
+        <button id="themeButton">
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+    <section class="hero">
+
+        <span class="badge">
+            🐍 Python Learning Platform
+        </span>
+
+        <h2>
+            Understand your code.
+            <br>
+            <span>Improve your skills.</span>
+        </h2>
+
+        <p>
+            CodeMentor AI analyzes Python programs,
+            explains their logic, evaluates complexity,
+            identifies potential issues and helps students
+            improve their programming skills.
+        </p>
+
+    </section>
+
+
+    <section class="workspace">
+
+        <div class="workspace-header">
+
+            <div>
+
+                <h2>
+                    Python Code Analyzer
+                </h2>
+
+                <p>
+                    Paste your Python program below.
+                </p>
+
+            </div>
+
+            <button id="sampleButton">
+                ✨ Load Example
+            </button>
+
+        </div>
+
+
+        <textarea
+            id="code"
+            spellcheck="false"
+            placeholder="Paste your Python code here..."></textarea>
+
+
+        <div class="actions">
+
+            <button
+                id="analyze"
+                class="primary">
+
+                🔍 Analyze Code
+
+            </button>
+
+
+            <button
+                id="clear"
+                class="secondary">
+
+                Clear
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <div
+        id="loading"
+        class="loading hidden">
+
+        <div class="spinner"></div>
+
+        <p>
+            CodeMentor is analyzing your code...
+        </p>
+
+    </div>
+
+
+    <section class="dashboard">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    Analysis Dashboard
+                </h2>
+
+                <p id="status">
+                    Waiting for code...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⏱️
+                </div>
+
+                <h3>
+                    Time Complexity
+                </h3>
+
+                <strong id="time">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💾
+                </div>
+
+                <h3>
+                    Space Complexity
+                </h3>
+
+                <strong id="space">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Code Quality
+                </h3>
+
+                <strong>
+                    <span id="quality">—</span>/100
+                </strong>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🧩
+                </div>
+
+                <h3>
+                    Functions
+                </h3>
+
+                <strong id="functions">
+                    —
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="grid">
+
+
+            <div class="panel">
+
+                <h3>
+                    ❌ Errors
+                </h3>
+
+                <div
+                    id="errors"
+                    class="content">
+
+                    Analysis will appear here.
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    💡 Code Explanation
+                </h3>
+
+                <div
+                    id="explanation"
+                    class="content">
+
+                    Analysis will appear here.
+
+                </div>
+
+            </div>
+
+
+            <div class="panel wide">
+
+                <h3>
+                    🤖 AI Mentor
+                </h3>
+
+                <div
+                    id="aiExplanation"
+                    class="content ai">
+
+                    AI explanation will appear here.
+
+                </div>
+
+            </div>
+
+
+            <div class="panel wide">
+
+
+                <div class="panel-title">
+
+                    <h3>
+                        ✅ Corrected Code
+                    </h3>
+
+                    <button id="copyButton">
+                        📋 Copy
+                    </button>
+
+                </div>
+
+
+                <pre id="corrected">Analysis will appear here.</pre>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    🧪 Suggested Test Cases
+                </h3>
+
+                <div id="tests">
+
+                    Analysis will appear here.
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    🎯 Suggestions
+                </h3>
+
+                <ul id="suggestions">
+
+                    <li>
+                        Suggestions will appear here.
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <section class="history">
+
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    📚 Analysis History
+                </h2>
+
+                <p>
+                    Your previous analyses are stored locally.
+                </p>
+
+            </div>
+
+
+            <button
+                id="clearHistory"
+                class="secondary">
+
+                Clear History
+
+            </button>
+
+        </div>
+
+
+        <div id="historyList">
+
+            <p>
+                No analyses yet.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    <h3>
+        CodeMentor AI
+    </h3>
+
+    <p>
+        Intelligent Python learning and code analysis platform.
+    </p>
+
+    <p>
+        © 2026 CodeMentor AI
+    </p>
+
+</footer>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}">
+</script>
+
+</body>
+
+</html>
