@@ -11,6 +11,7 @@ load_dotenv()
 app = Flask(__name__)
 
 DATABASE = "data/codementor.db"
+os.makedirs("data", exist_ok=True)
 
 
 # ==============================
