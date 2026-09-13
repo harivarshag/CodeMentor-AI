@@ -38,6 +38,8 @@ def init_database():
     connection.commit()
     connection.close()
 
+    init_database()
+
 
 def save_analysis(code, status, time, space, quality):
     connection = sqlite3.connect(DATABASE)
