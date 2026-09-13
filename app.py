@@ -10,8 +10,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-DATABASE = "data/codementor.db"
-os.makedirs("data", exist_ok=True)
+DATABASE = os.path.join(os.path.dirname(__file__), "data", "codementor.db")
+os.makedirs(os.path.dirname(DATABASE), exist_ok=True)
 
 
 # ==============================
@@ -38,7 +38,7 @@ def init_database():
     connection.commit()
     connection.close()
 
-    init_database()
+init_database()
 
 
 def save_analysis(code, status, time, space, quality):
